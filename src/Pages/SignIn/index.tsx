@@ -4,7 +4,8 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
-import { useAuth } from '../../hooks/AuthContext';
+import { useAuth } from '../../hooks/auth';
+import { useToast } from '../../hooks/toast';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImg from '../../assets/logo.svg';
@@ -26,6 +27,8 @@ const SingIn: React.FC = () => {
   // useContext - para acesso ao dados de contexto definidos
   // const { user, signIn } = useContext(AuthContext);
   const { signIn } = useAuth();
+
+  const { addToast } = useToast();
 
   // Lida com o submit e recebe como parâmetro os dados do formulário
   const handleSubmit = useCallback(
@@ -51,19 +54,27 @@ const SingIn: React.FC = () => {
            * não somente o primeiro encontrado */
           abortEarly: false,
         });
-        signIn({
+        await signIn({
           email: data.email,
           password: data.password,
         });
       } catch (err) {
         // Erros capturados
-        const errors = getValidationErrors(err);
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-        formRef.current?.setErrors(errors);
+          formRef.current?.setErrors(errors);
+        }
+
+        addToast({
+          type: 'error',
+          title: 'Erro na autenticação',
+          description: 'Ocorreu um erro ao fazer login, cheque as credenciais.',
+        });
       }
     },
     // variáveis externas devem ser colocadas neste array de dependência
-    [signIn],
+    [signIn, addToast],
   );
 
   return (

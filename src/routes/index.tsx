@@ -7,10 +7,10 @@ import { Switch } from 'react-router-dom';
 
 import Route from './Route';
 
-import SignIn from '../Pages/SignIn';
-import SingUp from '../Pages/SignUp';
+import SignIn from '../pages/SignIn';
+import SingUp from '../pages/SignUp';
 
-import Dashboard from '../Pages/Dashboard';
+import Dashboard from '../pages/Dashboard';
 
 const Routes: React.FC = () => (
   <Switch>

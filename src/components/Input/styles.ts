@@ -12,7 +12,7 @@ export const Container = styled.div<ContainerProps>`
   background: #232129;
   border-radius: 10px;
   padding: 16px;
-  width: 100%;
+  width: 90%;
 
   border: 2px solid #232129;
   color: #666360;
@@ -67,7 +67,7 @@ export const Container = styled.div<ContainerProps>`
   }
 `;
 
-// Uso o componente que criei e estilizo ele
+/* Uso o componente que criei e estilizo ele */
 export const Error = styled(Tooltip)`
   height: 20px;
   margin-left: 16px;

@@ -20,7 +20,7 @@ const toastTypeVariations = {
     color: #c53030;
   `,
 };
-// animated.div - para utilização das animações do react-spring em uma div
+/* animated.div - para utilização das animações do react-spring em uma div */
 export const Container = styled(animated.div)<ContainerProps>`
   width: 360px;
 

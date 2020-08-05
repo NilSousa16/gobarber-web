@@ -1,14 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
 import signUpBackgroundImg from '../../assets/sign-up-background.png';
 
 export const Container = styled.div`
-  // vh - 100% da área visível
+  /* vh - 100% da área visível */
   height: 100vh;
 
   display: flex;
-  // faz os itens ocuparem todo o espaç com height 100vh
+  /* faz os itens ocuparem todo o espaç com height 100vh */
   align-items: stretch;
 `;
 
@@ -16,12 +16,35 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
-  // alinha elementos do conteúdo ao centro na horizontal/vertical
+  /* alinha elementos do conteúdo ao centro na horizontal/vertical */
   place-content: center;
 
   width: 100%;
   max-width: 700px;
+`;
+
+/** Animação com keyframes */
+const appearFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to{
+    opacity: 1;
+    transform: trasnlateX(0);
+  }
+`;
+
+export const AnimationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /** Execução da animação */
+  animation: ${appearFromRight} 1s;
 
   form {
     margin: 80px 0;
@@ -45,9 +68,9 @@ export const Content = styled.div`
     }
   }
 
-  // estiliza apenas os 'as' que estão na raiz do content
+  /* estiliza apenas os 'as' que estão na raiz do content */
   > a {
-    color: #f4ede8;
+    color: #ff9000;
     display: block;
     text-decoration: none;
     transition: color 0.2s;
@@ -60,15 +83,15 @@ export const Content = styled.div`
     }
 
     &:hover {
-      color: ${shade(0.2, '#f4ede8')};
+      color: ${shade(0.2, '#ff9000')};
     }
   }
 `;
 
 export const Background = styled.div`
-  // Ocupa todo o espaço menos os de outros elementos
+  /* Ocupa todo o espaço menos os de outros elementos */
   flex: 1;
   background: url(${signUpBackgroundImg}) no-repeat center;
-  // Cobrir todo o espaço da div
+  /* Cobrir todo o espaço da div */
   background-size: cover;
 `;

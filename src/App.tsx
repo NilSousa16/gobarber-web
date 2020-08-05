@@ -1,22 +1,21 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import GlobalStyle from './styles/global';
 
-import SignIn from './Pages/SignIn';
-// import SignUp from './Pages/SignUp';
-// import AuthContext from './context/AuthContext';
-
 import AppProvider from './hooks';
 
+import Routes from './routes';
+
 const App: React.FC = () => (
-  <>
+  <Router>
     {/** Toda informação do provide passada ao value fica acessível para o SignIn ou qualquer outro componente dentro de AuthContext.Provider */}
     <AppProvider>
-      <SignIn />
+      <Routes />
     </AppProvider>
 
     <GlobalStyle />
-  </>
+  </Router>
 );
 
 export default App;

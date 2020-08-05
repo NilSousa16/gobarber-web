@@ -1,14 +1,15 @@
-import styled from 'styled-components';
+/** keyframes - para utilização desse recurso do css */
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
 import signInBackgroundImg from '../../assets/sign-in-background.png';
 
 export const Container = styled.div`
-  // vh - 100% da área visível
+  /* vh - 100% da área visível */
   height: 100vh;
 
   display: flex;
-  // faz os itens ocuparem todo o espaç com height 100vh
+  /* faz os itens ocuparem todo o espaço com height 100vh */
   align-items: stretch;
 `;
 
@@ -16,12 +17,35 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
-  // alinha elementos do conteúdo ao centro na horizontal/vertical
+  /* alinha elementos do conteúdo ao centro na horizontal/vertical */
   place-content: center;
 
   width: 100%;
   max-width: 700px;
+`;
+
+/** Animação com keyframes */
+const appearFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to{
+    opacity: 1;
+    transform: trasnlateX(0);
+  }
+`;
+
+export const AnimationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /** Execução da animação */
+  animation: ${appearFromLeft} 1s;
 
   form {
     margin: 80px 0;
@@ -45,7 +69,7 @@ export const Content = styled.div`
     }
   }
 
-  // estiliza apenas os 'as' que estão na raiz do content
+  /* estiliza apenas os 'as' que estão na raiz do content */
   > a {
     color: #ff9000;
     display: block;
@@ -66,9 +90,9 @@ export const Content = styled.div`
 `;
 
 export const Background = styled.div`
-  // Ocupa todo o espaço menos os de outros elementos
+  /* Ocupa todo o espaço menos os de outros elementos */
   flex: 1;
   background: url(${signInBackgroundImg}) no-repeat center;
-  // Cobrir todo o espaço da div
+  /* Cobrir todo o espaço da div */
   background-size: cover;
 `;
